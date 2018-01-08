@@ -1,0 +1,44 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+ng2ecom/dist
+ng2ecom/tmp
+
+# dependencies
+ng2ecom/node_modules
+express/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.metadata/
+/api/*/target
+/api/*/build
+
+# IDE - VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+ng2ecom/.sass-cache
+ng2ecom/connect.lock
+ng2ecom/coverage/*
+ng2ecom/libpeerconnection.log
+ng2ecom/npm-debug.log
+ng2ecom/testem.log
+ng2ecom/typings
+
+# e2e
+ng2ecom/e2e/*.js
+ng2ecom/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db

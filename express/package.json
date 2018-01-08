@@ -1,0 +1,32 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.1",
+  "author": {
+    "name": "françois facon",
+    "email": "francois.facon@worldline.com"
+  },
+  "scripts": {
+    "serve": "gulp express --gulpfile more/gulp/gulpfile.js --cwd ."    
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-util": "3.0.6",
+    "gulp-debug": "2.1.0",
+    "gulp-add-src": "0.2.0",
+    "gulp-cached": "1.1.0",
+    "gulp-typescript": "2.13.4",
+    "gulp-jspm": "0.5.10",
+    "gulp-sourcemaps": "2.0.0-alpha",
+    "gulp-html-replace": "1.5.5",
+    "gulp-rename": "1.2.2",
+    "gulp-filter": "4.0.0",
+    "gulp-save": "1.2.1",
+    "gulp-protractor": "2.4.0",
+    "underscore": "1.7.0",
+    "express": "4.13.3",
+    "glob": "5.0.15",
+    "body-parser": "1.15.1",
+    "typescript": "next",
+    "rimraf": "2.5.2"
+  }
+}
