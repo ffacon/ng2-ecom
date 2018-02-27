@@ -1,3 +1,77 @@
-<p>
-  book-details works!
-</p>
+<div class="root">
+    <article class="h-product hproduct k-product">
+
+        <header>
+            <!-- TODO_BASICS: Display the book name in the H3 element -->
+            <h3 class="p-name fn"></h3>
+            <!-- TODO_BASICS: Display the book category in the p element -->
+            <p class="p-category"><a href="#"></a></p>
+        </header>
+
+        <div class="photo-data">
+            <p>
+                <a href="#">
+                    <!-- TODO_MORE : use getImagePath here:
+                    <img class="u-photo" alt="Title of product" />
+                    -->
+                </a>
+            </p>
+        </div>
+
+        <div class="product-data">
+            <p class="rating"> 
+
+                <data class="p-rating">
+                    <!-- TODO_MORE : use getStarsImagePath here
+                    <img 
+                        alt="Three stars" 
+                    />
+                    -->
+                </data>
+            </p>
+
+            <!-- TODO_BASICS: Display the book description in the p element -->
+            <p class="e-description description">
+            </p>
+
+            <div class="price-data">
+                <p class="all-prices">
+                    <!-- TODO_BASICS: Display the book price in the data element -->
+                    <data class="price p-price sale"></data>
+                </p>
+            </div>
+            <div class="buyZone">
+                <div class="availability">
+                    <p><strong>Availability :</strong> immediate delivery</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+
+    <div class="k-review">
+        <!-- TODO_BASICS: Display the number of comments in the h3 element -->
+        <h3>nb comment(s)</h3>
+        <!-- TODO_MORE On the dl element, iterate on each comments of the book -->
+        <dl class="h-review hreview">
+            <dt>
+                <data class="p-rating">
+                    <!-- TODO_MORE display the rating stars for this comment 
+                    <img 
+                        alt="{{bookService.convertFromRating(comment.rate)}} stars" 
+                    />
+                    -->
+                </data>
+                <!-- TODO_MORE display the user of the comment 
+                <strong class="p-reviewer h-card"></strong>
+                -->
+            </dt>
+            <!-- TODO_MORE display the comment itself
+            <dd class="e-description">
+            </dd>
+            -->
+        </dl>
+    </div>
+    
+</div>
