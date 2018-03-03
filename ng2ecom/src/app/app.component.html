@@ -1,14 +1,55 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<div id="wrapper">
-  <div id="main" role="main">
-    <router-outlet></router-outlet>
+<div id="container">
+  
+    <header role="banner">
+  
+      <h1>
+        SDCO Book Store 
+        <small>All the books you need, at the highest price!</small>
+      </h1>
+      
+      <p *ngIf="userService.isLogged" class="k-basket-sum">
+        <a href="#" title="See basket details">
+          <strong>
+            {{userService.basket.getItems().length}}
+          </strong>
+          item(s) in your basket
+        </a>
+      </p>
+  
+      <p *ngIf="userService.isLogged" class="k-login-data">
+        Welcome, 
+        <span id="user-name">
+          <a href="#">
+            {{userService.getUser().firstName}}
+            {{userService.getUser().lastName}}
+          </a>
+        </span> 
+        <strong><a href="#" >Logout</a></strong>
+      </p>
+  
+      <p id="loginLink" class="k-login-data">
+        <a href="#" >Sign-in</a>
+      </p>
+  
+    </header>
+    
+    <nav>
+      <h2 class="k-skip"><a href="#wrapper">Main navigation (Skip it)</a></h2>
+      <ul class="k-navbar">
+        <li class="home"><a href="#" >Home</a></li>
+        <li><a href="#" >Books</a></li>
+      </ul>
+    </nav>
+    
+    <div id="wrapper">
+      <div id="main" role="main">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+    <footer role="contentinfo">
+      <p class="k-copyright">&copy; SDCO</p>
+      <a href="#" >Contact Us</a>
+    </footer>
+    
   </div>
-</div>
-

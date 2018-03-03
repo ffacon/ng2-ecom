@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +19,11 @@ import { UpdateDataPipe } from './pipes/update-data.pipe';
 import {Router} from '@angular/router';
 import { routing } from './app.routing';
 
+import {UserService} from './services/user.service';
+import {LocalStorageService} from './services/localStorage.service';
+import {NewsService} from './services/news.service';
+import {BooksService} from './services/books.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +40,11 @@ import { routing } from './app.routing';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     routing
   ],
-  providers: [],
+  providers: [UserService,  LocalStorageService, BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
