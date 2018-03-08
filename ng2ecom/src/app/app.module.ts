@@ -23,6 +23,7 @@ import {UserService} from './services/user.service';
 import {LocalStorageService} from './services/localStorage.service';
 import {NewsService} from './services/news.service';
 import {BooksService} from './services/books.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {BooksService} from './services/books.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     routing
   ],
   providers: [UserService,  LocalStorageService, BooksService],
