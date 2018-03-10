@@ -38,7 +38,9 @@ export class HomeComponent implements OnInit {
 	}
 
 	addLike= (news: News) => {
-		this.newsService.addLike(news);
+		this.newsService.addLike(news)
+			.subscribe((res :News) => console.log(res));
+		
 	}
 
 	deleteNews= (news: News) => {
@@ -48,7 +50,8 @@ export class HomeComponent implements OnInit {
 
 	addNews= () => {
 		this.newsService.addNews(this.nextNews)
-		.then((addedNews: News) => this.news.push(addedNews) );
+		.then(() => this.updateNews());
+			//(addedNews: News) => this.news.push(addedNews) );
 	}
 
 
