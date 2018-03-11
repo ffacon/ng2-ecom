@@ -1,39 +1,50 @@
 <div class="k-info-block">
   
-      <div class="hgroup">
-          <h3>Contact Us</h3>
-      </div>
-      <div class="content">
-        <p>
-          You have several possibilities to contact us:
-        </p>
-        <ul>
-          <li>
-            By Mail:
-            <a href="'mailto:' + email"></a>
-          </li>
-          <li>
-            By phone: 			
-          </li>
-          <li>
-            By postal mail: 
-          </li>
-          <li>
-            Send us a message:
-            <ul class="messageform">
-                <p>
-                  <textarea 
-                    placeholder="let us a message here..." 
-                  ></textarea>
-                </p>
-                <p>
-                  <input 
-                    type="submit" 
-                    value="send">
-                </p>
-            </ul>
-  
-          </li>
-        </ul>
-      </div>
+  <div class="hgroup">
+      <h3>Contact Us</h3>
   </div>
+  <div class="content">
+    <p>
+      You have several possibilities to contact us:
+    </p>
+    <ul>
+      <li>
+        By Mail:
+        <a [href]="'mailto:' + email">{{email}}</a>
+      </li>
+      <li>
+        By phone: {{phone}} 			
+      </li>
+      <li>
+        By postal mail: {{address}}
+      </li>
+      <div *ngIf="!messageSend; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+      <li>
+        Send us a message:
+        <ul class="messageform">
+            <p>
+              <textarea [readonly]="messageSend"
+                (input)="updateTextContent($event)"
+                placeholder="let us a message here..." 
+              ></textarea>
+            </p>
+            <p>
+              <input 
+                type="submit" 
+                value="send"
+                [disabled]="messageSend"
+                (click)="sendMessage()">
+            </p>
+        </ul>
+      </li>
+      </ng-template>
+        <ng-template #elseBlock><p>
+          your message "{{message}}" was send  
+        </p>
+      </ng-template>
+
+      
+    </ul>
+  </div>
+</div>
