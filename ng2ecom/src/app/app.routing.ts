@@ -7,6 +7,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {BooksComponent} from './books/books.component';
 import {BookDetailsComponent} from './book-details/book-details.component';
 import {HomeComponent} from './home/home.component';
+import {ContactComponent} from './contact/contact.component';
 
 
 const appRoutes: Routes = [
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
 	{ path: 'basket', component: BasketComponent },
 	{ path: 'profile', component: ProfileComponent },
 	{ path: 'login', component: LoginComponent },	
+	{ path: 'contact', component: ContactComponent },	
 	{ path: '',	redirectTo: 'home', pathMatch: 'full' }
 ];
 
