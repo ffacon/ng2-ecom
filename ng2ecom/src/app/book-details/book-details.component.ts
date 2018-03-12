@@ -18,7 +18,7 @@ export class BookDetailsComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		public bookService: BooksService,
+		public booksService: BooksService,
 		public userService: UserService){}
 
 	ngOnInit(): void {
@@ -30,20 +30,24 @@ export class BookDetailsComponent implements OnInit {
 		
 
 
-		this.bookService.getBook(this.bookId)
+		this.booksService.getBook(this.bookId)
 			.then((book: Book) => {
 				this.book = book;
 			});
 	}
 
-
 	getImagePath = (): string => {
-		return '';
+		return '/data/imgs/books/' + this.book.id + '.jpg';
 	}
 
 
 	getStarsImagePath= (): string => {
-		return '';
+		return 'assets/styles/ktheme/img/' + this.getRatingAverage() + '-stars.svg';
+	}
+
+	getRatingAverage= () : string => {
+		if (!this.book) return '';
+		return this.booksService.convertFromRating(this.booksService.getRatingAverage(this.book));
 	}
 
 
