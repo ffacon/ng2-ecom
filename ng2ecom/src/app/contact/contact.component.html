@@ -23,19 +23,23 @@
       <li>
         Send us a message:
         <ul class="messageform">
+            <form (ngSubmit)="sendMessage()" [formGroup]="controlGroup">
             <p>
               <textarea [readonly]="messageSend"
                 (input)="updateTextContent($event)"
+                [formControl]="messageCtrl"
                 placeholder="let us a message here..." 
               ></textarea>
             </p>
+            <p *ngIf="messageCtrl.hasError('containsValidCharacters')">Your message contains invalid Characters</p>
             <p>
               <input 
                 type="submit" 
                 value="send"
-                [disabled]="messageSend"
+                [disabled]="!controlGroup.valid" 
                 (click)="sendMessage()">
             </p>
+            </form>
         </ul>
       </li>
       </ng-template>
