@@ -24,6 +24,7 @@ import {LocalStorageService} from './services/localStorage.service';
 import {NewsService} from './services/news.service';
 import {BooksService} from './services/books.service';
 import { HttpClientModule } from '@angular/common/http';
+import { KPagination } from './components/kpagination/kpagination';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     FilterFieldPipe,
     OrderByPipe,
-    UpdateDataPipe
+    UpdateDataPipe,
+    KPagination
   ],
   imports: [
     BrowserModule,
