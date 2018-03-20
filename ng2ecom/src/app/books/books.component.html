@@ -2,15 +2,15 @@
   <form class="lateral-form">
       <p>
           <label for="nbPerPage">Results per page</label>
-          <input type="number" id="nbPerPage" name="nbPerPage" />
+          <input type="number" id="nbPerPage" name="nbPerPage" [(ngModel)]="booksPerPageFilter" />
       </p>
       <p>
           <label for="bookName">Filter by name</label>
-          <input type="text" id="bookName" name="bookName" />
+          <input type="text" id="bookName" name="bookName" [(ngModel)]="bookNameFilter"/>
       </p>
       <p>
           <label for="bookOrderBy">Order By</label>
-          <select name="bookOrderBy" id="bookOrderBy" >
+          <select name="bookOrderBy" id="bookOrderBy" [(ngModel)]="bookOrderBy" >
               <option>name</option>
               <option>price</option>
               <option>rating</option>
@@ -20,14 +20,20 @@
           <label for="Reverse filter">
               Reverse filter
           </label> 
-          <input id="switchBookOrder" type="checkbox" >
+          <input name="BookOrder" id="switchBookOrder" type="checkbox" [(ngModel)]="reverseOrderFilter" >
+   
           
       </p>
   </form>
       
   <div class="k-catalog" id="list-products" >
 
-      <article *ngFor="let book of books" class="k-product hproduct">
+    <article *ngFor="let book of books  
+                    |  filterField: 'name' : bookNameFilter 
+                    |  updateData 
+                    |  orderBy:bookOrderBy:reverseOrderFilter 
+                    |  slice:(currentPage-1)*booksPerPageFilter:currentPage*booksPerPageFilter" 
+                        class="k-product hproduct">
           <div class="photo-data">
               <p>
                   <a [routerLink]="['/book',book.id]">
@@ -65,5 +71,11 @@
 
   </div>
 
+  <kpagination 
+	(pageChange)="switchPage($event)" 
+	[startPage]="currentPage" 
+	[totalNbItems]="datacontainer.filteredBooks?.length" 
+	[nbItemsPerPage]="booksPerPageFilter"
+></kpagination>	
 
 </div>
