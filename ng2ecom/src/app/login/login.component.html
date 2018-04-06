@@ -1,18 +1,20 @@
 <div>
-	<div class="k-error-messages" >
-		<h3></h3>
+	<div class="k-error-messages"  *ngIf="errorMessage" >
+		<h3>{{errorMessage}}</h3>
 	</div>
 
-	<form  class="k-login" >
+	<form  class="k-login" (ngSubmit)="logUser()">
 		<fieldset>
 			<legend>Sign in</legend>
 			<p>
 				<label for="login">User identifier</label>
-				<input id="login" name="login" type="text" />
+				<input id="login" name="login" type="text" 
+				[(ngModel)]="login"/>
 			</p>
 			<p>
 				<label for="password">Password</label>
-				<input id="password" name="password" type="password"  />
+				<input id="password" name="password" type="password" 
+				[(ngModel)]="password" />
 				<span class="lost-password">
 					<a href="#">Forgot your password?</a>
 				</span>
