@@ -25,6 +25,7 @@ import {NewsService} from './services/news.service';
 import {BooksService} from './services/books.service';
 import { HttpClientModule } from '@angular/common/http';
 import { KPagination } from './components/kpagination/kpagination';
+import { BuyZoneComponent } from './buy-zone/buy-zone.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { KPagination } from './components/kpagination/kpagination';
     FilterFieldPipe,
     OrderByPipe,
     UpdateDataPipe,
-    KPagination
+    KPagination,
+    BuyZoneComponent
   ],
   imports: [
     BrowserModule,
