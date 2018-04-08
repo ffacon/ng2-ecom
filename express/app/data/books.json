@@ -1,8 +1,8 @@
 [
 		 {
 			"id": 1,
-			"name": "AngularJS",
-			"author": "Brad Green, Shyam Seshadri",
+			"name": "Angular Up and Running: Learning Angular, Step by Step",
+			"author": "Shyam Seshadri",
 			"price": 15.34,
 			"description": "Description...", 
 			"category": "book", 
@@ -23,9 +23,9 @@
 		}, 
 		{
 			"id": 2,
-			"name": "Angularjs in Action",
-			"author": "Brian Ford, Lukas Ruebbelke",
-			"price": 34.51,
+			"name": "Angular in Action",
+			"author": "Jeremy Wilken , David Aden",
+			"price": 40.91,
 			"description": "Description...", 
 			"category": "book", 
 			"isNew": true,
@@ -88,9 +88,9 @@
 		}, 
 		 {
 			"id": 7,
-			"name": "High Performance Flash",
-			"author": "Elad Elrom, R.J. Owen",
-			"price": 36.04,
+			"name": "ng-book: The Complete Guide to Angular",
+			"author": "Nathan Murray et Felipe Coury",
+			"price": 51.04,
 			"description": "Description...", 
 			"category": "book", 
 			"isNew": true,
@@ -98,13 +98,19 @@
 		}, 
 		 {
 			"id": 8,
-			"name": "Programming Windows 8 Apps",
-			"author": "Kraig Brockschmidt",
-			"price": 0.00,
+			"name": "Full Stack Development with JHipster: Build modern web applications and microservices with Spring and Angula",
+			"author": "Deepu K Sasidharan,  Sendil Kumar",
+			"price": 41.00,
 			"description": "Description...", 
 			"category": "book", 
 			"isNew": false,
-			"comments": null
+			"comments": [
+                {
+                    "rate": 5,
+                    "user": "Facon François",
+                    "comment": "I like it"
+                }
+            ]
 		}, 
 		 {
 			"id": 9,
@@ -145,17 +151,17 @@
         },
         {
             "id": 12,
-            "name": "Devenez un ninja avec AngularJS",
+            "name": "Devenez un ninja avec Angular",
             "author": "Ninja-Squad",
             "price": 20,
-            "description": "Devenir un Ninja avec AngularJS.",
+            "description": "Devenir un Ninja avec Angular",
             "category": "book",
             "isNew": false,
             "comments": [
                 {
                     "rate": 4,
                     "user": "Facon François",
-                    "comment": "En Français. Faites un geste pour Docteur Souris!"
+                    "comment": "En Français."
                 }
             ]
 
@@ -176,5 +182,15 @@
                 }
             ]
 
+		},
+		{
+            "id": 14,
+            "name": "Architecting Angular Applications with Redux, RxJS, and NgRx",
+            "author": "Christoffer Noring",
+            "price": 20,
+            "description": "Learn to build Redux style high-performing applications with Angular 6",
+            "category": "book",
+            "isNew": false,
+			"comments": null
         }
 ]

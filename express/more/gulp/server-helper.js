@@ -39,7 +39,10 @@ class ServerHelper{
 			for (var i in news){
 				let currentNews= news[i];
 				if (currentNews.id === newsId){
-					res.status(200);
+					news.splice(i,1);
+					res.status(204); //success with 204 but not with 200
+					//204 no content  : indique que la requête a réussi mais que le client n'a pa besoin de quitter la page actuelle
+					//200 ok : Si la page doit être actualisée avec une nouvelle page mise à jour, c'est le code de statut 200 qui doit être utilisé
 					res.send('OK');
 					return;
 				}
@@ -121,7 +124,7 @@ class ServerHelper{
 				}
 			}
 
-			res.status(403);
+			res.status(401);
 			res.send('Invalid credentials');
 
 		});		
