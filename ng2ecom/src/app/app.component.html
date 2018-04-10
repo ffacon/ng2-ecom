@@ -1,0 +1,55 @@
+<div id="container">
+  
+  <header role="banner">
+
+    <h1>
+      SDCO Book Store 
+      <small>All the books you need, at the highest price!</small>
+    </h1>
+    
+    <p *ngIf="userService.isLogged" class="k-basket-sum">
+      <a href="#" title="See basket details">
+        <strong>
+          {{userService.basket.getItems().length}}
+        </strong>
+        item(s) in your basket
+      </a>
+    </p>
+
+    <p *ngIf="userService.isLogged" class="k-login-data">
+      Welcome, 
+      <span id="user-name">
+        <a href="#">
+          {{userService.getUser().firstName}}
+          {{userService.getUser().lastName}}
+        </a>
+      </span> 
+      <strong><a href="#" >Logout</a></strong>
+    </p>
+
+    <p id="loginLink" class="k-login-data">
+      <a href="#" >Sign-in</a>
+    </p>
+
+  </header>
+  
+  <nav>
+    <h2 class="k-skip"><a href="#wrapper">Main navigation (Skip it)</a></h2>
+    <ul class="k-navbar">
+      <li class="home"><a href="#" >Home</a></li>
+      <li><a href="#" >Books</a></li>
+    </ul>
+  </nav>
+  
+  <div id="wrapper">
+    <div id="main" role="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
+  <footer role="contentinfo">
+    <p class="k-copyright">&copy; SDCO</p>
+    <a href="#" >Contact Us</a>
+  </footer>
+  
+</div>

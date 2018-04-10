@@ -1,21 +1,10 @@
-# Ng2ECom
+# Ng2ecom
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 6.1.5
-
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 ## Development server
 
-To install the Backend server,
-<ul>
-	<li>npm install</li>
-	<li>If you don't have gulp installed: npm install -g gulp</li>
-</ul>
-
-To launch the Backend server, open a console in subfolder /express/ and Run 'npm run serve'. 
-The app will serve the REST Api <a href="http://localhost:8080/" target="_blank">here</a>. 
-
-To launch the Backend server, open a console in subfolder /ng2ecom/ and  
-Run `ng run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
