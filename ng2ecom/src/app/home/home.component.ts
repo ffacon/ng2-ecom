@@ -24,9 +24,8 @@ export class HomeComponent implements OnInit {
 		this.updateNews();
 	}
 
-	updateNews= () => {
-		this.newsService
-			.getNews().subscribe((news: News[]) => {
+	updateNews() {
+		this.newsService.getNews().subscribe((news: News[]) => {
 				this.news = news;
 			});
 
@@ -36,17 +35,17 @@ export class HomeComponent implements OnInit {
 	}
 
 	addLike= (news: News) => {
-		this.newsService.addLike(news);
+		this.newsService.addLike(news).subscribe((newsUpdate: News) => {
+			console.log(newsUpdate.likes);
+		});
 	}
 
 	deleteNews= (news: News) => {
-		/*this.newsService.deleteNews(news)
-			.then(() => this.updateNews());*/
+		this.newsService.deleteNews(news).subscribe(() => this.updateNews());
 	}
 
 	addNews= () => {
-		/*this.newsService.addNews(this.nextNews)
-		.then((addedNews: News) => this.news.push(addedNews) );*/
+		this.newsService.addNews(this.nextNews).subscribe((addedNews: News) => this.news.push(addedNews));
 	}
 
 
