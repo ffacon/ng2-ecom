@@ -28,8 +28,6 @@ export class BookDetailsComponent implements OnInit {
         // In a real app: dispatch action to load the details here.
     });
 		
-
-
 		this.bookService.getBook(this.bookId)
 			.subscribe((book: Book) => {
 				this.book = book;
@@ -37,14 +35,20 @@ export class BookDetailsComponent implements OnInit {
 	}
 
 
-	getImagePath = (): string => {
-		return '';
+	getImagePath(): string {
+		if(this.book!=undefined)
+			return '/data/imgs/books/' + this.book.id + '.jpg';
+		else 
+			return '/data/imgs/books/1.jpg';
 	}
 
 
-	getStarsImagePath= (): string => {
-		return '';
+	getStarsImagePath(): string {
+		return 'assets/styles/ktheme/img/' + this.getRatingAverage() + '-stars.svg';
 	}
 
-
+	getRatingAverage= () : string => {
+		if (!this.book) return '';
+		return this.bookService.convertFromRating(this.bookService.getRatingAverage(this.book));
+	}
 }
