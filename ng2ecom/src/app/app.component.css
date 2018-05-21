@@ -1,0 +1,3 @@
+textarea.ng-invalid.ng-dirty {
+    border: 3px red solid;
+   }  
