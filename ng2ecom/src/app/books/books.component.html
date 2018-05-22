@@ -27,7 +27,9 @@
       
   <div class="k-catalog" id="list-products" >
 
-      <article *ngFor="let book of books |  orderBy:bookOrderBy:reverseOrderFilter 
+      <article *ngFor="let book of books | filterField: 'name' : bookNameFilter 
+                                         | updateData 
+                                         | orderBy:bookOrderBy:reverseOrderFilter 
                                          |  slice:(currentPage-1)*booksPerPageFilter:currentPage*booksPerPageFilter" 
                                          class="k-product hproduct">
           <div class="photo-data">
