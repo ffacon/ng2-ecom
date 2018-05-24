@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpResponse, HttpClient,HttpClientModule } from '@angular/common/http';
-import { LocalStorageService } from '../services/localStorage.service';
+import { LocalStorageService } from '../services/local-Storage.service';
 
 describe('BuyZoneComponent', () => {
   let component: BuyZoneComponent;
