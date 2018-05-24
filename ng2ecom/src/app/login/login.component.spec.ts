@@ -7,7 +7,7 @@ import { LoginComponent } from './login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserService } from '../services/user.service';
-import { LocalStorageService } from '../services/local-Storage.service'
+import { LocalStorageService } from '../services/local-storage.service'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClientModule,HttpRequest,HttpParams,HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { User } from '../beans/user';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let userService : UserService;
-  let localStorageService : LocalStorageService;
+  let localStorageSrv : LocalStorageService;
   let spy: any;
   let router:Router;
   let httpClient:HttpClient;
@@ -27,13 +27,13 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       providers: [
         {provide: UserService, useValue: userService},
-        {provide: LocalStorageService, useValue: localStorageService}]
+        {provide: LocalStorageService, useValue: localStorageSrv}]
     }) .compileComponents();
    
   }));
 
   beforeEach(() => {
-    userService=new UserService(httpClient,localStorageService);
+    userService=new UserService(httpClient,localStorageSrv);
     component = new LoginComponent(router,userService)
   });
 
