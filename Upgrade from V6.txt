@@ -1,0 +1,17 @@
+In order to update the angular-cli package installed globally in your system, you need to run:
+
+npm uninstall -g angular-cli
+npm cache clean or npm cache verify #(if npm > 5)
+
+Depending on your system, you may need to prefix the above commands with sudo.
+
+Also, most likely you want to also update your local project version, because inside your project directory it will be selected with higher priority than the global one:
+
+npm install  @angular/cli@latest
+
+After updating your CLI, you probably want to update your Angular version too.
+
+ng update --all=true --force=true
+
+
+npm install typescript@'>=3.1.1 <3.3'
