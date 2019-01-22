@@ -1,46 +1,52 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {News} from '../beans/news';
 import { Observable, ObservableLike } from 'rxjs';
+import { HandleError, HttpErrorHandler } from '../http-error-handler.service';
+import { tap, catchError } from 'rxjs/operators';
+
+const postOptions = {
+ headers: new HttpHeaders({
+'Content-Type': 'application/json'
+ })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService{
 
-	private theNews: Observable<News[]>;
+ private theNews: Observable<News[]>;
+ private handleError: HandleError;
+ readonly newsUrl: string = '/api/app/news';
 
-	constructor(private http: HttpClient){}
+ constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler){
+  this.handleError = httpErrorHandler.createHandleError();
+ }
 
-	getNews= (): Observable<News[]> => {
+ getNews = (): Observable<News[]> => {
+  this.theNews = this.http.get<News[]>(this.newsUrl);
+  return this.theNews;
+ }
 
-		//USE HTTP SERVICE INSTEADs
-		return this.theNews;
-	}
+ addLike(news: News): Observable<News> {
+ return this.http.post<News>(this.newsUrl + '/like/' + news.id, '')
+  .pipe(
+    tap((res: News) => { news.likes = res.likes; }),
+    catchError(this.handleError<News>('addLike'))
+   );
+ }
 
-	addLike(news: News) {
-		//ADD LIKE ON SERVER AND UPDATE CLIENT ON SUCCESS
-	}
+ deleteNews(news: News): Observable<News>  {
+  return this.http.delete<News>(`${this.newsUrl}/${news.id}`, postOptions);
+ }
 
-	deleteNews(news: News) : Observable<News>  {
-		//SEND DELETE TO THE SERVER
-		//AND UPDATE YOUR LOCAL NEWS ON SUCCESS
-		let ret : Observable<News>
-		return ret;
-	}
+ addNews(news: News): Observable<News> {
+  return this.http.post<News>(this.newsUrl, news, postOptions);
+ }
 
-	addNews(news: News) : Observable<News> {
-
-		//POST THE NEWS TO ADD ON SERVER SIDE (use headers to do that )
-		//THE SERVER ANSWERS WITH THE ADDED NEWS, USE THIS ANSWER TO
-		//ADD THE NEWS TO THE EXSITING LIST OF NEWS
-		let ret : Observable<News>
-		return ret;
-
-	}
-
-	randomNews= (): Observable<News> => {
-		let ret : Observable<News>
-		return ret;
-	}
+ randomNews = (): Observable<News> => {
+  return this.http.get<News>(`${this.newsUrl}/random`);
+ }
 }
