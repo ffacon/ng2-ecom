@@ -27,36 +27,35 @@
       
   <div class="k-catalog" id="list-products" >
 
-      <article  class="k-product hproduct">
-          <div class="photo-data">
+      <article *ngFor="let book of books" class="k-product hproduct">
+          <div class="photo-data" [routerLink]="['/book',book.id]">
               <p>
                   <a href="#">
-                      <img class="photo" [src]="'/data/imgs/books/1.jpg'" />
+                      <img class="photo" [src]="'/data/imgs/books/' + book.id + '.jpg'" />
                   </a>
               </p>
           </div>
 
-          <p class="new" >new</p>
+          <p class="new" *ngIf="book.isNew" >new</p>
 
           <h3 class="fn name">
-              <a href="#" title="See Product sheet">
-                 
+              <a href="#" [routerLink]="['/book',book.id]" title="See Product sheet">
+                {{book.name}}   
               </a>
           </h3>
 
-          <p class="rating ">
-
-              <span >
-                  <a href="#"> comment(s)</a>
-              </span>
-              <span >
-                  No comment
-              </span>
+          <p  [ngClass]="booksService.getRatingClass(book)" >
+            <span [hidden]="!book.comments">
+                <a [routerLink]="['/book',book.id]" >{{book.comments?.length}} comment(s)</a>
+            </span>
+            <span *ngIf="book?.comments==undefined" >
+                No comment
+            </span>
          </p>
 
           <div class="price-data">
               <p class="all-prices">
-                  <strong class="price new"></strong>
+                  <strong class="price new">{{book.price | currency:'EUR'}}</strong>
               </p>
           </div>
           <div class="buyZone">
