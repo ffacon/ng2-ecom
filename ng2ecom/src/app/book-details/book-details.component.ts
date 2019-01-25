@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from '../services/user.service';
 import {BooksService} from '../services/books.service';
 import {Book} from '../beans/book';
-import { ActivatedRoute  }  from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-details',
@@ -16,35 +16,40 @@ export class BookDetailsComponent implements OnInit {
   private sub: any;
   private bookId :number;
 
-	constructor(
-		private route: ActivatedRoute,
-		public bookService: BooksService,
-		public userService: UserService){}
+constructor(
+ private route: ActivatedRoute,
+ public bookService: BooksService,
+ public userService: UserService){}
 
-	ngOnInit(): void {
-		this.sub = this.route.params.subscribe( params => {
-		this.bookId = +params['id']; 
-		// (+) converts string 'bookId' to a number
+ ngOnInit(): void {
+  this.sub = this.route.params.subscribe( params => {
+  this.bookId = +params['id']; 
+  // (+) converts string 'bookId' to a number
         // In a real app: dispatch action to load the details here.
     });
-		
+  this.bookService.getBook(this.bookId)
+    .subscribe((book: Book) => {
+      this.book = book;
+    });
+  }
 
 
-		this.bookService.getBook(this.bookId)
-			.subscribe((book: Book) => {
-				this.book = book;
-			});
-	}
+  getImagePath(): string {
+  if (this.book != undefined) {
+    return '/data/imgs/books/' + this.book.id + '.jpg';
+  } else {
+    return '/data/imgs/books/1.jpg';
+   }
+ }
 
 
-	getImagePath = (): string => {
-		return '';
-	}
+ getStarsImagePath(): string {
+   return 'assets/styles/ktheme/img/' + this.getRatingAverage() + '-stars.svg';
+ }
 
-
-	getStarsImagePath= (): string => {
-		return '';
-	}
-
-
+ getRatingAverage(): string {
+  if (!this.book) { return ''; } else {	
+   return this.bookService.convertFromRating(this.bookService.getRatingAverage(this.book));
+  }
+ }
 }
