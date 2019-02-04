@@ -1,5 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../services/contact.service';
+import { FormControl, FormBuilder, Validators, FormGroup } from '@angular/forms';
+
+function containsValidCharacters(c: FormControl) {
+
+const specialChars = ['\\', '<', '>', '&' ];
+
+for (let i in specialChars) {
+if ( c.value !== undefined && c.value.indexOf(specialChars[i]) !== -1 ) {
+    return {'containsValidCharacters': true };
+ }
+}
+ return null;
+}
 
 @Component({
   selector: 'app-contact',
@@ -14,10 +27,19 @@ export class ContactComponent implements OnInit {
   messageSend = false;
   message: string;
 
-  constructor(contactService: ContactService) {
+  controlGroup: FormGroup;
+  public messageCtrl: FormControl;
+
+  constructor(contactService: ContactService, fb: FormBuilder) {
     this.email = contactService.email ;
     this.phone = contactService.phone ;
-    this. address = contactService.address;
+    this.address = contactService.address;
+
+    this.messageCtrl = fb.control('', [Validators.required, containsValidCharacters]);
+    this.controlGroup = fb.group({
+     'messageCtrl': this.messageCtrl
+  });
+
 }
 
   updateTextContent(data: any) {
@@ -25,11 +47,10 @@ export class ContactComponent implements OnInit {
     console.log(this.message);
   }
 
-  sendMessage = () => {
+  sendMessage() {
     console.log('message send: ' + this.message);
     this.messageSend = true;
   }
-
 
   ngOnInit() {
   }
