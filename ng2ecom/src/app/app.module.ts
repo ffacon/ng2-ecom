@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { FilterFieldPipe } from './pipes/filter-field.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { UpdateDataPipe } from './pipes/update-data.pipe';
+import { KPagination } from './components/kpagination/kpagination';
 
 import {Router} from '@angular/router';
 import { routing } from './app.routing';
@@ -31,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     FilterFieldPipe,
     OrderByPipe,
-    UpdateDataPipe
+    UpdateDataPipe,
+    KPagination
   ],
   imports: [
     BrowserModule, 

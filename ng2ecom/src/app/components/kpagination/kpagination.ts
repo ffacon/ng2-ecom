@@ -58,7 +58,6 @@ export class KPagination implements OnInit{
 
 	set nbPages(val: number){
 		this._nbPages = val;
-		range(1, val).subscribe( val => this.nbPagesSet.push(val));
 	}
 
 	get nbPages(){
