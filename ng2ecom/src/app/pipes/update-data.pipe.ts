@@ -1,12 +1,15 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, Inject } from '@angular/core';
+import { DataContainerService } from '../services/data-container.service';
 
 @Pipe({
   name: 'updateData'
 })
 export class UpdateDataPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
-  }
+  constructor( @Inject(DataContainerService) public dataContainer: DataContainerService) {}
 
+  transform(input: any, args: any) {
+   this.dataContainer.filteredBooks = input;
+  return input;
+  }
 }
