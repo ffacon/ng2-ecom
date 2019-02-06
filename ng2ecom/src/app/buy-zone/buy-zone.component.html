@@ -1,0 +1,8 @@
+<div *ngIf="userService.isLogged" class="buyZone">
+  <p class="buy">
+      <a (click)="addToBasket(book)">Add to basket</a>
+  </p>
+  <div class="availability">
+      <p><strong>Availability :</strong> immediate delivery</p>
+  </div>
+</div>
