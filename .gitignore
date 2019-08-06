@@ -3,10 +3,17 @@
 # compiled output
 ng2ecom/dist
 ng2ecom/tmp
+ng2ecom/out-tsc
+# Only exists if Bazel was run
+ng2ecom/bazel-out
 
 # dependencies
 ng2ecom/node_modules
 express/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -25,6 +32,7 @@ express/node_modules
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.history/*
 
 # misc
 ng2ecom/.sass-cache
