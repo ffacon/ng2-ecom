@@ -7,47 +7,44 @@ import {News} from '../beans/news';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-   providers: [NewsService]
+  providers: [NewsService]
 
 })
 export class HomeComponent implements OnInit {
 
-  message: string = 'Welcome in our shop!!!';
-	news: News[];
-	newsOfTheDay: News= {};
-	nextNews: News = {};
+  message = 'Welcome in our shop!!!';
+  news: News[];
+  newsOfTheDay: News = {};
+  nextNews: News = {};
 
 
-	constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService) {}
 
-	ngOnInit(){
-		this.updateNews();
-	}
+  ngOnInit() {
+    // this.updateNews();
+  }
 
-	updateNews= () => {
-		this.newsService
-			.getNews().subscribe((news: News[]) => {
-				this.news = news;
-			});
+  updateNews = () => {
+    this.newsService.getNews().subscribe((news: News[]) => {
+      this.news = news;
+    });
 
-		this.newsService.randomNews().subscribe((news: News) => {
-				this.newsOfTheDay = news;
-			});
-	}
+  // this.newsService.randomNews().subscribe((news: News) => {
+  //     this.newsOfTheDay = news;
+  // });
+  }
 
-	addLike= (news: News) => {
-		this.newsService.addLike(news);
-	}
+  addLike = (news: News) => {
+    this.newsService.addLike(news);
+  }
 
-	deleteNews= (news: News) => {
-		/*this.newsService.deleteNews(news)
-			.then(() => this.updateNews());*/
-	}
+  deleteNews = (news: News) => {
+    // this.newsService.deleteNews(news)
+    // .then(() => this.updateNews());
+  }
 
-	addNews= () => {
-		/*this.newsService.addNews(this.nextNews)
-		.then((addedNews: News) => this.news.push(addedNews) );*/
-	}
-
-
+  addNews = () => {
+    // this.newsService.addNews(this.nextNews)
+    // .then((addedNews: News) => this.news.push(addedNews) );*/
+  }
 }

@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BooksComponent } from './books/books.component';
@@ -34,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     UpdateDataPipe
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     routing

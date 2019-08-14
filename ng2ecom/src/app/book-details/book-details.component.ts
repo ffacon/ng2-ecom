@@ -12,39 +12,33 @@ import { ActivatedRoute  }  from '@angular/router';
 })
 export class BookDetailsComponent implements OnInit {
 
-  public book: Book;
-  private sub: any;
-  private bookId :number;
+ public book: Book;
+ private sub: any;
+ private bookId: number;
 
-	constructor(
-		private route: ActivatedRoute,
-		public bookService: BooksService,
-		public userService: UserService){}
+ constructor(
+  private route: ActivatedRoute,
+  public bookService: BooksService,
+  public userService: UserService) {}
 
-	ngOnInit(): void {
-		this.sub = this.route.params.subscribe( params => {
-		this.bookId = +params['id']; 
-		// (+) converts string 'bookId' to a number
-        // In a real app: dispatch action to load the details here.
-    });
-		
+ ngOnInit(): void {
+  this.sub = this.route.params.subscribe( params => {
+    this.bookId = +params[`id`];
+    // (+) converts string 'bookId' to a number
+    // In a real app: dispatch action to load the details here.
+  });
 
+  this.bookService.getBook(this.bookId).subscribe((book: Book) => {
+    this.book = book;
+   });
+ }
 
-		this.bookService.getBook(this.bookId)
-			.subscribe((book: Book) => {
-				this.book = book;
-			});
-	}
+ getImagePath = (): string => {
+  return '';
+ }
 
-
-	getImagePath = (): string => {
-		return '';
-	}
-
-
-	getStarsImagePath= (): string => {
-		return '';
-	}
-
+ getStarsImagePath = (): string => {
+  return '';
+ }
 
 }
