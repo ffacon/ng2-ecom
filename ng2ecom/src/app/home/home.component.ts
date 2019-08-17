@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(private newsService: NewsService) {}
 
   ngOnInit() {
-    // this.updateNews();
+    this.updateNews();
   }
 
   updateNews = () => {
@@ -29,22 +29,25 @@ export class HomeComponent implements OnInit {
       this.news = news;
     });
 
-  // this.newsService.randomNews().subscribe((news: News) => {
-  //     this.newsOfTheDay = news;
-  // });
+    this.newsService.randomNews().subscribe((news: News) => {
+       this.newsOfTheDay = news;
+    });
   }
 
   addLike = (news: News) => {
-    this.newsService.addLike(news);
+    this.newsService.addLike(news).subscribe(
+      (newsUpdated: News) => console.log('sucess add like', newsUpdated), // sucess
+      (error) => console.error(error) // error
+      );
   }
 
   deleteNews = (news: News) => {
-    // this.newsService.deleteNews(news)
-    // .then(() => this.updateNews());
+    this.newsService.deleteNews(news).subscribe(() => this.updateNews());
   }
 
   addNews = () => {
-    // this.newsService.addNews(this.nextNews)
-    // .then((addedNews: News) => this.news.push(addedNews) );*/
+    this.newsService.addNews(this.nextNews).subscribe(
+      (addedNews: News) => this.news.push(addedNews)
+     );
   }
 }
