@@ -11,25 +11,19 @@
       <div class="photo-data">
           <p>
               <a href="#">
-                  <!-- TODO_MORE : use getImagePath here:
-                  <img class="u-photo" alt="Title of product" />-->
-                  <img class="photo" [src]="'/data/imgs/books/7.jpg'" />
+                  <!-- TODO_MORE : use getImagePath here: -->
+                  <img class="u-photo" [src]="getImagePath()" alt="{{book?.name}}"/>
                   
               </a>
           </p>
       </div>
 
       <div class="product-data">
-          <p class="rating"> 
-
-              <data class="p-rating">
-                  <!-- TODO_MORE : use getStarsImagePath here
-                  <img 
-                      alt="Three stars" 
-                  />
-                  -->
-              </data>
-          </p>
+        <p *ngIf="getRatingAverage()" class="rating"> 
+            <data class="p-rating">
+                <img [src]="getStarsImagePath()"  alt="{{getRatingAverage() +  ' stars'}}" />
+            </data>
+        </p>
 
           <!-- TODO_BASICS: Display the book description in the p element -->
           <p class="e-description description">
@@ -56,23 +50,17 @@
       <!-- TODO_BASICS: Display the number of comments in the h3 element -->
       <h3>{{book?.comments?.length}} comment<data  *ngIf="book?.comments?.length >1 ">(s)</data></h3>
       <!-- TODO_MORE On the dl element, iterate on each comments of the book -->
-      <dl class="h-review hreview">
+      <dl class="h-review hreview" *ngFor="let comment of book?.comments">
           <dt>
               <data class="p-rating">
-                  <!-- TODO_MORE display the rating stars for this comment 
-                  <img 
-                      alt="{{bookService.convertFromRating(comment.rate)}} stars" 
-                  />
-                  -->
+                <img [src]="'assets/styles/ktheme/img/' + bookService.convertFromRating(comment.rate) + '-stars.svg'"
+                alt="{{bookService.convertFromRating(comment.rate)}} stars" 
+                />      
               </data>
-              <!-- TODO_MORE display the user of the comment 
-              <strong class="p-reviewer h-card"></strong>
-              -->
+              <data [class]="'rating '  + bookService.convertFromRating(comment.rate)"></data>
+              <strong class="p-reviewer h-card">{{comment.user}}</strong>
           </dt>
-          <!-- TODO_MORE display the comment itself
-          <dd class="e-description">
-          </dd>
-          -->
+          <dd class="e-description">{{comment.comment}}</dd>
       </dl>
   </div>
   

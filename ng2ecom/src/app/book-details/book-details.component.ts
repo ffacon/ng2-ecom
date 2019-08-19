@@ -34,11 +34,21 @@ export class BookDetailsComponent implements OnInit {
  }
 
  getImagePath = (): string => {
-  return '';
+  if (this.book !== undefined) {
+    return '/data/imgs/books/' + this.book.id + '.jpg';
+  } else {
+    return '/data/imgs/books/1.jpg';
+   }
  }
 
  getStarsImagePath = (): string => {
-  return '';
+  return 'assets/styles/ktheme/img/' + this.getRatingAverage() + '-stars.svg';
+ }
+
+ getRatingAverage(): string {
+  if (!this.book) { return ''; } else {
+   return this.bookService.convertFromRating(this.bookService.getRatingAverage(this.book));
+  }
  }
 
 }
