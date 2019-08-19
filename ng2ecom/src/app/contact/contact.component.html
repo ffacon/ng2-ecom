@@ -10,30 +10,40 @@
     <ul>
       <li>
         By Mail:
-        <a href="'mailto:' + email"></a>
+        <a [href]="'mailto:' + email">{{email}}</a>
       </li>
       <li>
-        By phone: 			
+        By phone:{{phone}}  			
       </li>
       <li>
-        By postal mail: 
+        By postal mail:{{address}} 
       </li>
+      <div *ngIf="!messageSend; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
       <li>
         Send us a message:
         <ul class="messageform">
             <p>
-              <textarea 
+              <textarea [readonly]="messageSend"
+                (input)="updateTextContent($event)"
                 placeholder="let us a message here..." 
               ></textarea>
             </p>
             <p>
               <input 
                 type="submit" 
-                value="send">
+                value="send"
+                [disabled]="messageSend"
+                (click)="sendMessage()">
             </p>
         </ul>
 
       </li>
+    </ng-template>
+    <ng-template #elseBlock><p>
+      your message "{{message}}" was sent  
+    </p>
+    </ng-template>
     </ul>
   </div>
 </div>
