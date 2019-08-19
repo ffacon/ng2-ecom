@@ -18,6 +18,8 @@ import { Book } from '../beans/book';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MockBooksService } from '../test/mocks/books.service';
+import { asyncData } from '../test/mocks/async-observable-helper';
 
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
@@ -25,7 +27,7 @@ describe('BookDetailsComponent', () => {
   let expectedbook: Book;
 
   let mockUserService: UserService;
-  let mockBooksService: BooksService;
+  let mockBooksService: MockBooksService;
   let activatedRoute: ActivatedRouteStub;
 
   function createRouterSpy() {
@@ -34,26 +36,22 @@ describe('BookDetailsComponent', () => {
   function createUserServiceSpy() {
     return jasmine.createSpyObj('UserService', ['login']);
   }
-  function createBooksServiceSpy() {
-    return jasmine.createSpyObj('BooksService', ['getBooks', 'getBook']);
-  }
+
 
   beforeEach(async(() => {
 
     mockUserService = createUserServiceSpy();
-    mockBooksService = createBooksServiceSpy();
-    activatedRoute = new ActivatedRouteStub({id: 1});
+    mockBooksService = new MockBooksService();
+    mockBooksService.createAsyncDataSet200();
+    activatedRoute = new ActivatedRouteStub({id: 12});
     const routerSpy = createRouterSpy();
 
     TestBed.configureTestingModule({
       declarations: [ BookDetailsComponent ],
       imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, HttpClientModule ],
       providers: [
-        UserService,
-        BooksService,
-        LocalStorageService,
         {provide: UserService, useValue: mockUserService},
-        {provide: BooksService, useValue: mockBooksService},
+        {provide: BooksService, useValue: mockBooksService.mockService},
         {provide: ActivatedRoute, useValue: activatedRoute},
         {provide: Router, useValue: routerSpy}
       ]
@@ -66,5 +64,9 @@ describe('BookDetailsComponent', () => {
     fixture = TestBed.createComponent(BookDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });
