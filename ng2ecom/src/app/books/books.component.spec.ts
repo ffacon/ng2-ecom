@@ -4,6 +4,12 @@ import { BooksComponent } from './books.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BooksService } from '../services/books.service';
 import { asyncData } from '../test/mocks/async-observable-helper';
+import { DataContainerService } from '../services/data-container.service';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { KPagination } from '../components/kpagination/kpagination';
+import { FilterFieldPipe } from '../pipes/filter-field.pipe';
+import { OrderByPipe } from '../pipes/order-by.pipe';
+import { UpdateDataPipe } from '../pipes/update-data.pipe';
 
 describe('BooksComponent', () => {
   let component: BooksComponent;
@@ -20,10 +26,15 @@ describe('BooksComponent', () => {
   beforeEach(async(() => {
     // mockBooksService = createBooksServiceSpy();
     TestBed.configureTestingModule({
-      declarations: [ BooksComponent ],
-      imports: [ RouterTestingModule],
+      declarations: [ BooksComponent,
+                      KPagination,
+                      FilterFieldPipe,
+                      OrderByPipe,
+                      UpdateDataPipe ],
+      imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule ],
       providers: [
-        {provide: BooksService, useValue: mockBooksService}
+        {provide: BooksService, useValue: mockBooksService},
+        DataContainerService
       ]
     })
     .compileComponents();
