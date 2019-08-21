@@ -64,7 +64,7 @@ export class UserService {
   return this.user;
  }
 
- get basket(): Basket {
+ getBasket(): Basket {
   return this._basket;
  }
 

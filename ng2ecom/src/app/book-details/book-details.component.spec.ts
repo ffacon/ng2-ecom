@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MockBooksService } from '../test/mocks/books.service';
 import { asyncData } from '../test/mocks/async-observable-helper';
+import { BuyZoneComponent } from '../buy-zone/buy-zone.component';
 
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
@@ -47,7 +48,8 @@ describe('BookDetailsComponent', () => {
     const routerSpy = createRouterSpy();
 
     TestBed.configureTestingModule({
-      declarations: [ BookDetailsComponent ],
+      declarations: [ BookDetailsComponent,
+                      BuyZoneComponent ],
       imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, HttpClientModule ],
       providers: [
         {provide: UserService, useValue: mockUserService},

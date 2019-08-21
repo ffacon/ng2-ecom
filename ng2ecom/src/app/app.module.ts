@@ -17,6 +17,7 @@ import {Router} from '@angular/router';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { KPagination } from './components/kpagination/kpagination';
+import { BuyZoneComponent } from './buy-zone/buy-zone.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { KPagination } from './components/kpagination/kpagination';
     FilterFieldPipe,
     OrderByPipe,
     UpdateDataPipe,
-    KPagination
+    KPagination,
+    BuyZoneComponent
   ],
   imports: [
     BrowserModule,

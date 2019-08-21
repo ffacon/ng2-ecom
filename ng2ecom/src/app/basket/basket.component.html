@@ -9,40 +9,40 @@
 <div class="k-info-block">
     <div class="hgroup">
         <h3>
-        	Basket ( item(s) )
+        	Basket ( {{items.length}} item(s) )
         </h3>
     </div>
     <div class="content">
 
-    	<dl  class="basket-item" >
+    	<dl *ngFor="let item of items" class="basket-item" >
     		<dd>
-				<a href="#" title="Go to the product sheet"> 
-					<img  alt="Article" width="100" />
+				<a href="#" [routerLink]="['/book', item?.product?.id]" title="Go to the product sheet"> 
+					<img  [src]="'/data/imgs/books/'+ item?.product?.id + '.jpg'" alt="Article" width="100" />
 				</a>
     		</dd>
 			<dt>
-				<a href="#" >product.name</a>
+				<a href="#" [routerLink]="['BookDetails', {id:item.product.id}]"  >{{item.product.name}}</a>
 			</dt>
 			<dd>
 				<label>
 					Quantity: 
-					<input type="number" min="1"  class="product-qty" />
+					<input type="number" min="1"  [(ngModel)]="item.qty" class="product-qty" />
 				</label>
 			</dd>
-			<dd class="price"></dd>
+			<dd class="price">{{item.qty * item.product.price | currency:'EUR':true }}</dd>
 			<dd>
-				<a href="#"  >
+				<a href="#" (click)="removeProduct(item.product)" >
 					<img src="/assets/styles/ktheme/img/delete.svg">
 				</a>
 			</dd>
     	</dl>
 
 		<p  class="basket-total">
-			TOTAL: <strong></strong>
+			TOTAL: <strong>{{getTotal() | currency:'EUR':true }}</strong>
 		</p>
 
 		<ul class="k-buttons-bar">
-			<li><input type="submit"  Save Basket /> </li>
+			<li><input type="submit" (click)="storeBasket()"   Save Basket /> </li>
     </ul>
 </div>
 
