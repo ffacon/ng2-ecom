@@ -13,5 +13,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private router: Router, public userService: UserService) {}
 
+  logout() {
+    this.userService.logout();
+  }
 
 }
