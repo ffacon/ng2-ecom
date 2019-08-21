@@ -16,6 +16,7 @@ import { UpdateDataPipe } from './pipes/update-data.pipe';
 import {Router} from '@angular/router';
 import { routing } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { KPagination } from './components/kpagination/kpagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     FilterFieldPipe,
     OrderByPipe,
-    UpdateDataPipe
+    UpdateDataPipe,
+    KPagination
   ],
   imports: [
     BrowserModule,

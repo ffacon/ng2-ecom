@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../services/books.service';
 import { Book } from '../beans/book';
+import { KPagination } from '../components/kpagination/kpagination';
 
 @Component({
   selector: 'app-books',
@@ -8,7 +9,8 @@ import { Book } from '../beans/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-
+  booksPerPageFilter = 4;
+  currentPage = 1;
   books: Book[];
   constructor(public booksService: BooksService) { }
 
@@ -18,4 +20,7 @@ export class BooksComponent implements OnInit {
     );
   }
 
+  switchPage(page: number) {
+    this.currentPage = page;
+  }
 }
