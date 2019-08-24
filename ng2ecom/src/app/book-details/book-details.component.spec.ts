@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +25,8 @@ import { BuyZoneComponent } from '../buy-zone/buy-zone.component';
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
   let fixture: ComponentFixture<BookDetailsComponent>;
+  let de: DebugElement;
+  let el: HTMLElement;
   let expectedbook: Book;
 
   let mockUserService: UserService;
@@ -62,13 +64,26 @@ describe('BookDetailsComponent', () => {
   }));
 
 
-  beforeEach(() => {
+  beforeEach(fakeAsync(() => {
+    mockBooksService.createAsyncDataSet200();
     fixture = TestBed.createComponent(BookDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
 
-  it('should create', () => {
+  it('should create', fakeAsync(() => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
-  });
+  }));
+
+  it('should display the proprety of book ', fakeAsync(() => {
+    console.log(component.book);
+    mockBooksService.createAsyncDataSet200();
+    fixture.detectChanges();
+    de = fixture.debugElement.query(By.css('.hproduct'));
+    el = de.nativeElement;
+    const expectedText = el.querySelector('h3').textContent;
+    expect(expectedText).toContain('Devenez un ninja avec Angular');
+    expect(component.book.price).toEqual(1);
+  }));
 });

@@ -19,4 +19,12 @@ describe('UpdateDataPipe', () => {
     const pipe = new UpdateDataPipe(dataContainerMock);
     expect(pipe).toBeTruthy();
   });
+
+  it('Update data works', function() {
+   const pipe = new UpdateDataPipe(dataContainerMock);
+   const newContent = 'new field content';
+   pipe.transform(newContent, []);
+   expect(dataContainerMock.filteredBooks).toEqual(newContent);
+  });
+
 });

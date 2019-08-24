@@ -19,9 +19,20 @@ fakeBook = { id : 12, name: 'Devenez un ninja avec Angular', author: 'Ninja-Squa
              comments: [ { rate: 5, user: 'Facon François', comment: 'En Français.' } ]
   };
 
+fakeBook3 = { id: 3, name: 'Instant AngularJS Starter', author: 'Dan Menard',
+              price: 16.26, description: 'Description...',
+              category: 'book', isNew: false,
+              comments: null
+  };
+
+fakeBooks: Book[];
 
 constructor() {
   this.fakeResponse = null;
+  this.fakeBooks = new Array<Book>(2);
+  this.fakeBooks.push(this.fakeBook);
+  this.fakeBooks.push(this.fakeBook3);
+
   this.mockService = this.createSpyObj();
   }
 
@@ -34,7 +45,7 @@ constructor() {
   }
 
   public createAsyncDataSet200() {
-    this.getBooksSpy = this.mockService.getBooks.and.returnValue(asyncData(this.fakeBook));
+    this.getBooksSpy = this.mockService.getBooks.and.returnValue(asyncData(this.fakeBooks));
     this.getBookSpy = this.mockService.getBook.and.returnValue(asyncData(this.fakeBook));
     this.getRatingAverageSpy = this.mockService.getRatingAverage.and.returnValue(this);
     this.convertFromRatingSpy = this.mockService.convertFromRating.and.returnValue(this);

@@ -57,7 +57,7 @@ describe('HomeComponent', () => {
       likes: 11},
     {
       id: 2,
-      author: 'Nourredine',
+      author: 'Yassine',
       category: 'True fact',
       content: 'Angular training is awesome!!!!',
       likes: 1200

@@ -29,7 +29,7 @@ public loginResp = {firstName: 'john', lastName: 'doe', nbItems: 0};
   public createAsyncDataSet200() {
     this.fakeBasket = new Basket();
     this.fakeBasket.addProduct(this.mockBooksService.fakeBook);
-    this.loginSpy = this.mockService.login.and.returnValue(this.loginResp);
+    this.loginSpy = this.mockService.login.and.returnValue(asyncData(this.loginResp));
     this.getBasket = this.mockService.getBasket.and.returnValue(this.fakeBasket);
 
   }
