@@ -10,7 +10,7 @@
     <p *ngIf="userService.isLogged" class="k-basket-sum">
       <a href="#" title="See basket details" [routerLink]="['basket']">
         <strong>
-          {{userService.basket.getItems().length}}
+          {{userService.getBasket().getItems().length}}
         </strong>
         item(s) in your basket
       </a>
