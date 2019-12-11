@@ -9,7 +9,7 @@
     "serve": "gulp express --gulpfile more/gulp/gulpfile.js --cwd ."
   },
   "devDependencies": {
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-util": "3.0.6",
     "gulp-debug": "2.1.0",
     "gulp-add-src": "0.2.0",
