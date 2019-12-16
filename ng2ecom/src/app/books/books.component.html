@@ -58,7 +58,7 @@
 
           <div class="price-data">
               <p class="all-prices">
-                  <strong class="price new">{{book.price | currency:'EUR' : 'symbol'}}</strong>
+                  <strong class="price" [ngClass]="{new : book.isNew}">{{book.price | currency:'EUR' : 'symbol'}}</strong>
               </p>
           </div>
           <app-buy-zone [book]="book"></app-buy-zone>  
